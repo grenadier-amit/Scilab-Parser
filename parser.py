@@ -226,7 +226,7 @@ for line in sci:
         token2[0] = "this.x"
         token[0] = '.'.join(token2)
 
-    token[1] = re.sub("^[\"] ",",",token[1])
+    token[1]=re.sub(r"([^\"]) ",r"\1,",token[1])
 
     if token[1].endswith(';'):
         token[1] = token[1][:-1]
