@@ -38,7 +38,7 @@ for line in sci:
     else:
         temp = line
 
-    if flag and temp.endswith(']'):
+    if flag and (temp.endswith("];") or temp.endswith(']')):
         flag = False
         line2append += line
         sci2.append(line2append)
@@ -47,7 +47,7 @@ for line in sci:
     elif flag:
         line2append += line
 
-    elif temp.startswith('[') and not temp.endswith(']'):
+    elif temp.startswith('[') and not (temp.endswith("];") or temp.endswith(']')):
         flag = True
         line2append = line
 
