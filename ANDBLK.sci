@@ -24,7 +24,7 @@ function [x,y,typ]=ANDBLK(job,arg1,arg2)
     y=[];
     typ=[];
     select job
- case "set" then
+    case "set" then
         x=arg1
     case "define" then
         andlog=ANDLOG_f("define")
