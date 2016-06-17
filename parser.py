@@ -20,13 +20,29 @@ with open(fileName, 'r') as content_file:
                 sci += contentLine + '\n'
 
 func_name = re.search("(\w+)\(job,arg1,arg2", sci)
-print "function %s () {\n" % func_name.group(1)
+if func_name:
+    print "function %s () {\n" % func_name.group(1)
+else:
+    func_name = re.search("(\w+)\(job, arg1, arg2", sci)
+    if func_name:
+        print "function %s () {\n" % func_name.group(1)
+    else:
+        print sci
 
-sci = sci.split("\"define\" then\n")
-sci = sci[1]
-sci = sci.split("\nend\n")[0]
-sci = sci.split('\n')
-
+if '"define" then' in sci:
+    sci = sci.split("\"define\" then\n")
+    sci = sci[1]
+    sci = sci.split("\nend\n")[0]
+    sci = sci.split('\n')
+elif 'case "define"' in sci:
+    sci = sci.split("case \"define\"\n")
+    sci = sci[1]
+    sci = sci.split("\nend\n")[0]
+    sci = sci.split('\n')
+else:
+    print sci
+    print "ERROR......case define is missing.......ERROR", file
+    exit()
 sci2 = []
 line2append = ""
 flag = False
@@ -34,11 +50,13 @@ flag = False
 for line in sci:
 
     if line.find('=') != -1:
-        temp = line.split('=')[1]
+        temp = line.split('=', 1)[1]
     else:
         temp = line
 
-    if flag and (temp.endswith("];") or temp.endswith(']')):
+    temp = temp.strip()
+
+    if flag and (temp.endswith(']') or temp.endswith('];')):
         flag = False
         line2append += line
         sci2.append(line2append)
@@ -47,7 +65,7 @@ for line in sci:
     elif flag:
         line2append += line
 
-    elif temp.startswith('[') and not (temp.endswith("];") or temp.endswith(']')):
+    elif temp.startswith('[') and not (temp.endswith(']') or temp.endswith('];')):
         flag = True
         line2append = line
 
@@ -110,10 +128,15 @@ def argAnalyser(token):
             return scilabBoolean(token)
         elif token[1].isdigit() or (token[0] in ('-', '+') and token[1].isdigit()):
             return scilabDouble(token)
+        elif token[1] == '[':
+            return argAnalyser(token[1:])
         else:
             return token
     else:
-        return token
+        if re.search("^[^\(].?list", token[1]):
+            return listCheck(token)
+        else:
+            return token
 
 
 def tokenAnalyser(token):
@@ -156,7 +179,7 @@ def epsilon(token):
         pushFlag = 1
         leftStr = diagram(token)
 
-    if re.search(".?list", token[1]):
+    if re.search("^[^\(].?list", token[1]):
         rightStr = listCheck(token)
 
     elif re.search("scicos_link", token[1]):
@@ -176,14 +199,31 @@ def listCheck(token):
     args = []
     listType = re.search("(.?list)", token[1])
     arguments = re.search("\((.*)\)", token[1])
-    arguments = arguments.group(1).split(',')
 
-    if arguments[0] != '':
+    if listType.group(1) == 'mlist' or listType.group(1) == 'tlist':
+        argType = re.search("(\[.*?\])", token[1])
+        token[1] = re.sub(r"\[.*?\]", "", token[1])
+        args.append('new ScilabString(%s)' % argType.group(1))
+        arguments = re.search("\((.*)\)", token[1])
+        arguments = arguments.group(1).split(',')
+        arguments = arguments[1:]
+
+    else:
+        try:
+            if ',' in arguments.group(1):
+                arguments = arguments.group(1).split(',')
+        except:
+            print "no arguments"
+            exit()
+
+    if arguments and isinstance(arguments, collections.Iterable):
         for i in arguments:
-            if i not in varList:
+            if i not in varList and i:
                 args.append(argAnalyser(i))
             else:
                 args.append(i)
+    else:
+        return token[1]
 
     args = listType.group(1) + '(' + ','.join(args) + ')'
     return args
@@ -219,20 +259,32 @@ def standard_define(token):
 
 
 for line in sci:
-    token = line.split('=', 1)
+
+    line = re.sub(r"string\((.*?)\)", r"\1.toString()", line)
+    if '=' in line:
+        token = line.split('=', 1)
+        token[0] = token[0].strip()
+        token[1] = token[1].strip()
+    else:
+        print line
+        continue
+
     token2 = token[0].split('.')
 
     if token2[0] == 'x':
         token2[0] = "this.x"
         token[0] = '.'.join(token2)
 
-    token[1]=re.sub(r"([^\"]) ",r"\1,",token[1])
-
     if token[1].endswith(';'):
         token[1] = token[1][:-1]
+        token[1] = token[1].strip()
+
+    token[1] = re.sub(r"([^\"]) ", r"\1,", token[1])
 
     token[1] = token[1].replace(';', "],[")
+    token[1] = re.sub(r"(\w+)\((.+)\:(.+)\)", r"...colon_operator(\1,\2,\3)", token[1])
     token[1] = re.sub(r"(\w+)\(:\)\'", r"...transpose(\1)", token[1])
+    token[1] = re.sub(r"(\[[\d\w]+:[\d\w]+\])\'", r"...transpose(\1)", token[1])
     token[1] = re.sub(r"(\w+)\(:\)", r"...\1", token[1])
 
     if token2[0] not in varList.keys():
