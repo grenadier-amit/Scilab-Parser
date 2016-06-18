@@ -1,98 +1,19 @@
 import re
 import sys
+import os
+import collections
 
-sci = ""
-fileName = sys.argv[1]
-
-with open(fileName, 'r') as content_file:
-    for line in content_file:
-        contentLine = line.strip()
-
-        if contentLine:
-            contentLine = contentLine.split("//")
-            contentLine = contentLine[0]
-
-            if contentLine.endswith(".."):
-                contentLine = contentLine.strip("..\n")
-                sci += contentLine
-
-            elif contentLine:
-                sci += contentLine + '\n'
-
-func_name = re.search("(\w+)\(job,arg1,arg2", sci)
-if func_name:
-    print "function %s () {\n" % func_name.group(1)
-else:
-    func_name = re.search("(\w+)\(job, arg1, arg2", sci)
-    if func_name:
-        print "function %s () {\n" % func_name.group(1)
-    else:
-        print sci
-
-if '"define" then' in sci:
-    sci = sci.split("\"define\" then\n")
-    sci = sci[1]
-    sci = sci.split("\nend\n")[0]
-    sci = sci.split('\n')
-elif 'case "define"' in sci:
-    sci = sci.split("case \"define\"\n")
-    sci = sci[1]
-    sci = sci.split("\nend\n")[0]
-    sci = sci.split('\n')
-else:
-    print sci
-    print "ERROR......case define is missing.......ERROR", file
-    exit()
-sci2 = []
-line2append = ""
-flag = False
-
-for line in sci:
-
-    if line.find('=') != -1:
-        temp = line.split('=', 1)[1]
-    else:
-        temp = line
-
-    temp = temp.strip()
-
-    if flag and (temp.endswith(']') or temp.endswith('];')):
-        flag = False
-        line2append += line
-        sci2.append(line2append)
-        line2append = ""
-
-    elif flag:
-        line2append += line
-
-    elif temp.startswith('[') and not (temp.endswith(']') or temp.endswith('];')):
-        flag = True
-        line2append = line
-
-    else:
-        sci2.append(line)
-
-sci = sci2
-varList = {"this.x": "scicos_model()"}
+orig_stdout = sys.stdout
 
 
-def scilabBoolean(token):
-    token = token.replace("[]", "")
-    token = token.replace("%t", "true")
-    token = token.replace("%f", "false")
-    return "new ScilabBoolean(%s)" % token
+# TO HANDLE ALL DISTINCT VARIBLES ENCOUNTERED
+varList={}
+
+# PATH FOR ALL .SCI FILES
+rootdir = '/usr/share/scilab'
 
 
-def scilabDouble(token):
-    token = token.replace("[]", "")
-    return "new ScilabDouble(%s)" % token
-
-
-def scilabString(token):
-    token = token.replace("[]", "")
-    return "new ScilabString(%s)" % token
-
-
+#-------------- FUNCTION FOR ANALYSING RHS AFTER "=" SIGN IN A STATEMENT--------------#
 def Analyser(token):
     if token[1].endswith(',') or token[1].endswith(';'):
         token[1] = token[1][:-1]
@@ -110,7 +31,7 @@ def Analyser(token):
     else:
         epsilon(token)
 
-
+# -------------- FUNCTION --------------#
 def argAnalyser(token):
     if token[0] == '\"':
         token = '[' + token + ']'
@@ -139,17 +60,7 @@ def argAnalyser(token):
             return token
 
 
-def tokenAnalyser(token):
-    if token[1][1] == '\"':
-        print "\t%s = %s;" % (token[0], scilabString(token[1]))
-
-    elif token[1][1] == '%':
-        print "\t%s = %s;" % (token[0], scilabBoolean(token[1]))
-
-    else:
-        print "\t%s = %s;" % (token[0], scilabDouble(token[1]))
-
-
+# -------------- FUNCTION FOR PUSHING IN AN ARRAY--------------#
 def diagram(token):
     temp_str = ""
     token[0] = re.sub("(\(\d+\))", "", token[0])
@@ -158,6 +69,7 @@ def diagram(token):
     return temp_str
 
 
+# -------------- FUNCTION FOR HANDLING EDGE CASES--------------#
 def epsilon(token):
     leftStr = token[0]
     rightStr = token[1]
@@ -195,6 +107,8 @@ def epsilon(token):
         print '\t' + leftStr + '=' + rightStr + ';'
 
 
+
+# -------------- FUNCTION FOR SCILAB LISTS--------------#
 def listCheck(token):
     args = []
     listType = re.search("(.?list)", token[1])
@@ -216,6 +130,7 @@ def listCheck(token):
             print "no arguments"
             exit()
 
+    # IF LIST IS NOT EMPTY
     if arguments and isinstance(arguments, collections.Iterable):
         for i in arguments:
             if i not in varList and i:
@@ -229,6 +144,9 @@ def listCheck(token):
     return args
 
 
+
+
+#-------------- FUNCTION FOR HANDLING SCICOS LINK FUNCTION --------------#
 def scicosLink(token):
     arguments = re.search("\((.*)\)", token[1])
     arguments = arguments.group(1).replace('=', ':')
@@ -248,6 +166,29 @@ def scicosLink(token):
     return argList
 
 
+
+
+#-------------- FUNCTION FOR HANDLING SCILAB BOOLEAN --------------#
+def scilabBoolean(token):
+    token = token.replace("[]", "")
+    token = token.replace("%t", "true")
+    token = token.replace("%f", "false")
+    return "new ScilabBoolean(%s)" % token
+
+
+#-------------- FUNCTION FOR HANDLING SCILAB DOUBLE --------------#
+def scilabDouble(token):
+    token = token.replace("[]", "")
+    return "new ScilabDouble(%s)" % token
+
+
+#-------------- FUNCTION FOR HANDLING SCILAB STRING --------------#
+def scilabString(token):
+    token = token.replace("[]", "")
+    return "new ScilabString(%s)" % token
+
+
+#-------------- FUNCTION FOR HANDLING STANDARD DEFINE FUNCTION --------------#
 def standard_define(token):
     arguments = re.search("\w+\((.*)\)", token[1])
     arguments = arguments.group(1).replace(',', ' ', 1)
@@ -258,42 +199,177 @@ def standard_define(token):
     return arguments
 
 
-for line in sci:
+# -------------- FUNCTION FOR HANDLING CASES WHEN ARGUMENTS ARE INSIDE "[]"--------------#
+def tokenAnalyser(token):
+    if token[1][1] == '\"':
+        print "\t%s = %s;" % (token[0], scilabString(token[1]))
 
-    line = re.sub(r"string\((.*?)\)", r"\1.toString()", line)
-    if '=' in line:
-        token = line.split('=', 1)
-        token[0] = token[0].strip()
-        token[1] = token[1].strip()
-    else:
-        print line
-        continue
-
-    token2 = token[0].split('.')
-
-    if token2[0] == 'x':
-        token2[0] = "this.x"
-        token[0] = '.'.join(token2)
-
-    if token[1].endswith(';'):
-        token[1] = token[1][:-1]
-        token[1] = token[1].strip()
-
-    token[1] = re.sub(r"([^\"]) ", r"\1,", token[1])
-
-    token[1] = token[1].replace(';', "],[")
-    token[1] = re.sub(r"(\w+)\((.+)\:(.+)\)", r"...colon_operator(\1,\2,\3)", token[1])
-    token[1] = re.sub(r"(\w+)\(:\)\'", r"...transpose(\1)", token[1])
-    token[1] = re.sub(r"(\[[\d\w]+:[\d\w]+\])\'", r"...transpose(\1)", token[1])
-    token[1] = re.sub(r"(\w+)\(:\)", r"...\1", token[1])
-
-    if token2[0] not in varList.keys():
-        if len(re.findall("\[.*\].*\[.*\]", token[1])):
-            token[1] = '[' + token[1] + ']'
-        print "\n\tvar %s = %s;" % (token2[0], token[1])
-        varList[token2[0]] = token[1]
+    elif token[1][1] == '%':
+        print "\t%s = %s;" % (token[0], scilabBoolean(token[1]))
 
     else:
-        Analyser(token)
+        print "\t%s = %s;" % (token[0], scilabDouble(token[1]))
 
-print '}'
+
+
+#-------------- GETTING ALL BLOCK NAMES --------------#
+nameList= os.listdir("/home/karma/xcos/blocks_xcos") # PATH OF ALL XCOS BLOCK STORED IN .XCOS FORMAT
+script_dir = os.path.dirname(__file__)
+block_names=[]
+for i in nameList:
+    name=i[:-5]
+    block_names.append(name)
+
+
+#-------------- SEARCHING FOR ALL SCI FILES OF XCOS BLOCKS --------------#
+for subdir, dirs, files in os.walk(rootdir):
+    for file in files:
+        if file.endswith(".sci") and file[:-4] in block_names:
+
+            f = open('%s.js' % file[:-4], 'w')
+            #REDIRECTING STANDARD OUTPUT OF "print" STATEMENT TO .js FILE
+            sys.stdout = f
+
+
+
+            sci = ""
+
+            abs_file_path = os.path.join(subdir, file)
+
+            with open(abs_file_path, 'r') as content_file:
+                for line in content_file:
+                    contentLine = line.strip()
+
+                    if contentLine:
+                        # REMOVING SCILAB COMMENTS
+                        contentLine = contentLine.split("//")
+                        contentLine = contentLine[0]
+
+                        # APPENDING A CONTINUOS SCILAB STATEMENT IN THE SAME LINE
+                        if contentLine.endswith(".."):
+                            contentLine = contentLine.strip("..\n")
+                            sci += contentLine
+
+                        elif contentLine:
+                            sci += contentLine + '\n'
+
+            # EXTRACTING FUNCTION NAME
+            func_name = re.search("(\w+)\(job,arg1,arg2", sci)
+            if func_name:
+                print "function %s () {\n" % func_name.group(1)
+            else:
+                func_name = re.search("(\w+)\(job, arg1, arg2", sci)
+                if func_name:
+                    print "function %s () {\n" % func_name.group(1)
+                else:
+                    print sci
+                    continue
+
+
+            # SEARCHING FOR "case "define" " TO START PARSING FROM THERE TILL "end" STATEMENT
+            if '"define" then' in sci:
+                sci = sci.split("\"define\" then\n")
+                sci = sci[1]
+                sci = sci.split("\nend\n")[0]
+                sci = sci.split('\n')
+            elif 'case "define"' in sci:
+                sci = sci.split("case \"define\"\n")
+                sci = sci[1]
+                sci = sci.split("\nend\n")[0]
+                sci = sci.split('\n')
+            else:
+                print sci
+                print "ERROR......case define is missing.......ERROR",file
+                exit()
+
+
+
+            sci2 = []
+            line2append = ""
+            flag = False
+
+            for line in sci:
+
+                if line.find('=') != -1:
+                    temp = line.split('=',1)[1]
+                else:
+                    temp = line
+
+                temp=temp.strip()
+
+                if flag and (temp.endswith(']') or temp.endswith('];')):
+                    flag = False
+                    line2append += line
+                    sci2.append(line2append)
+                    line2append = ""
+
+                elif flag:
+                    line2append += line
+
+                elif temp.startswith('[') and not (temp.endswith(']') or temp.endswith('];')):
+                    flag = True
+                    line2append = line
+
+                else:
+                    sci2.append(line)
+
+            sci = sci2
+
+            varList.clear()
+            varList['this.x']="scicos_model()"
+
+
+
+            #-------------- ANALYSING SCI FILE LINE BY LINE --------------#
+            for line in sci:
+
+                # REPLACING "string" FUNCTION OF SCILAB TO JAVASCRIPT EQUIVALENT OF "tostring" FUNCTION
+                line=re.sub(r"string\((.*?)\)",r"\1.toString()",line)
+
+
+                # SPLITTING LINE FROM "=" SYMBOL
+                if '=' in line:
+                    token = line.split('=', 1)
+                    token[0] = token[0].strip()
+                    token[1] = token[1].strip()
+                else:
+                    print "\t",line
+                    continue
+
+                # EXTRACTING THE VARIABLE NAME
+                token2 = token[0].split('.')
+
+                if token2[0] == 'x':
+                    token2[0] = "this.x"
+                    token[0] = '.'.join(token2)
+
+                if token[1].endswith(';'):
+                    token[1] = token[1][:-1]
+                    token[1]=token[1].strip()
+
+                token[1] = re.sub(r"([^\"]) ",r"\1,",token[1])
+
+                # HANDLING INVERSE ARRAYS
+                token[1] = re.sub(r';(?![^"]*\")',r"],[",token[1])
+                token[1] = re.sub(r"(\w+)\((.+)\:(.+)\)", r"...colon_operator(\1,\2,\3)", token[1])
+                # HANDLING TRANSPOSE MATRIX
+                token[1] = re.sub(r"(\w+)\(:\)\'", r"...transpose(\1)", token[1])
+                token[1] = re.sub(r"(\[[\d\w]+:[\d\w]+\])\'", r"...transpose(\1)", token[1])
+                token[1] = re.sub(r"(\w+)\(:\)", r"...\1", token[1])
+
+                # IF NEW VARIABLE IS ENCOUNTERED
+                if token2[0] not in varList.keys():
+                    if len(re.findall("\[.*\].*\[.*\]", token[1])):
+                        token[1] = '[' + token[1] + ']'
+                        print "\n\tvar %s = %s;" % (token2[0], token[1])
+                    else:
+                        print "\n\tvar %s = %s;" % (token2[0], token[1])
+                    varList[token2[0]] = token[1]
+
+                else:
+                    Analyser(token)
+
+            print '}'
+
+            sys.stdout = orig_stdout
+            f.close()
