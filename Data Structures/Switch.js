@@ -7,7 +7,7 @@ function Switch () {
 
 	var Roff = 1e5;
 
-	var S = [["Ron"],["Roff"]];
+	var S = ["Ron";"Roff"];
 
 	var Z = eval(S);
 	model.sim = new ScilabString(["Switch"]);
@@ -16,7 +16,7 @@ function Switch () {
 
 	var mo = modelica();
 	mo.model=model.sim;
-	mo.inputs = new ScilabString(["p"],["inp"]);
+	mo.inputs = new ScilabString(["p";"inp"]);
 	mo.outputs = new ScilabString(["n"]);
 	mo.parameters=list(S,Z);
 	model.equations=mo;
@@ -28,6 +28,6 @@ function Switch () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,list(gr_i,0));
-	this.x.graphics.in_implicit = new ScilabString(["I"],["E"]);
+	this.x.graphics.in_implicit = new ScilabString(["I";"E"]);
 	this.x.graphics.out_implicit = new ScilabString(["I"]);
 }

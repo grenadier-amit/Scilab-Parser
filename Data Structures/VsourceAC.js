@@ -17,7 +17,7 @@ function VsourceAC () {
 	mo.model = new ScilabString(["VsourceAC"]);
 	mo.inputs = new ScilabString(["p"]);
 	mo.outputs = new ScilabString(["n"]);
-	mo.parameters=list(["VA"],["f"],list(VA,FR));
+	mo.parameters=list(["VA";"f"],list(VA,FR));
 	model.equations=mo;
 
 	var exprs = [[VA.toString()],[FR.toString()]];

@@ -1,7 +1,7 @@
 function BACKLASH () {
 
 
-	var exprs = [["0"],["1"],["1"]];
+	var exprs = ["0";"1";"1"];
 
 	var model = scicos_model();
 	model.sim=list("backlash",4);

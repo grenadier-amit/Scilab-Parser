@@ -27,7 +27,7 @@ function CMAT3D () {
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([true,false]);
 
-	var exprs = [[strcat(x.toString()," ")],[strcat(y.toString()," ")],["jetcolormap(25.toString()")],[cmin.toString()],[cmax.toString()]];
+	var exprs = [[strcat(x.toString()," ");strcat(y.toString()," ");"jetcolormap(25.toString()")],[cmin.toString()],[cmax.toString()]];
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);

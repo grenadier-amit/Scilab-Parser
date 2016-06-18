@@ -19,7 +19,7 @@ function SourceP () {
 	mo.model = new ScilabString(["Source"]);
 	mo.inputs = new ScilabDouble();
 	mo.outputs = new ScilabString(["C"]);
-	mo.parameters=list(["P0"],["T0"],["H0"],["option_temperature"],[P0],[T0],[H0],[option_temperature]);
+	mo.parameters=list(["P0";"T0";"H0";"option_temperature"],[P0],[T0],[H0],[option_temperature]);
 	model.equations=mo;
 	model.in=ones(size(mo.inputs,"*"),1);
 	model.out=ones(size(mo.outputs,"*"),1);

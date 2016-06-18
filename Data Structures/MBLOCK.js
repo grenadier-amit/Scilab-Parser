@@ -5,11 +5,11 @@ function MBLOCK () {
 
 	var intype = ["I"];
 
-	var out = [["y1"],["y2"]];
+	var out = ["y1";"y2"];
 
-	var outtype = [["I"],["E"]];
+	var outtype = ["I";"E"];
 
-	var param = [["R"],["L"]];
+	var param = ["R";"L"];
 
 	var paramv = list(0.1,.0001);
 

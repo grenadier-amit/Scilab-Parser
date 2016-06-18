@@ -30,11 +30,11 @@ function CMSCOPE () {
 	model.intyp = new ScilabDouble([1],[1]);
 	model.evtin = new ScilabDouble([1]);
 	model.rpar = new ScilabDouble([0],[...period],[...yy]);
-	model.ipar = new ScilabDouble([win],[...colon_operator(size,in,"*")],[N],[...wpos],[...wdim],[...in],[clrs(1,sum(in))]);
+	model.ipar = new ScilabDouble([win;...colon_operator(size,in,"*")],[N],[...wpos],[...wdim],[...in],[clrs(1,sum(in))]);
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([true,false]);
 
-	var exprs = [[strcat(in.toString()," ")],[strcat(clrs.toString()," ")],[win.toString()],[sci2exp([])],[sci2exp([])],[strcat(ymin.toString()," ")],[strcat(ymax.toString()," ")],[strcat(per.toString()," ")],[N.toString()],[0.toString()],[emptystr()]];
+	var exprs = [[strcat(in.toString()," ");strcat(clrs.toString()," ");win.toString();sci2exp([]);sci2exp([]);strcat(ymin.toString()," ");strcat(ymax.toString()," ");strcat(per.toString()," ")],[N.toString()],[0.toString()],[emptystr()]];
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);

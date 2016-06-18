@@ -18,7 +18,7 @@ function PuitsP () {
 	var mo = modelica();
 	mo.model = new ScilabString(["Puits"]);
 	mo.inputs = new ScilabString(["C"]);
-	mo.parameters=list(["P0"],["T0"],["H0"],["option_temperature"],[P0],[T0],[H0],[option_temperature]);
+	mo.parameters=list(["P0";"T0";"H0";"option_temperature"],[P0],[T0],[H0],[option_temperature]);
 	model.equations=mo;
 	model.in=ones(size(mo.inputs,"*"),1);
 

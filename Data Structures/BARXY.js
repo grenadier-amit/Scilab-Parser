@@ -22,5 +22,5 @@ function BARXY () {
 	this.x=new standard_define(new ScilabDouble([2,2]),model,[],[]);
 	this.x.graphics.in_implicit = new ScilabString(["E",,"E"]);
 	this.x.graphics.out_implicit = new ScilabDouble();
-	this.x.graphics.exprs = new ScilabString(["-15"],["15"],["-15"],["15"],["1"]);
+	this.x.graphics.exprs = new ScilabString(["-15";"15";"-15";"15";"1"]);
 }

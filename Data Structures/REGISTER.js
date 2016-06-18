@@ -12,7 +12,7 @@ function REGISTER () {
 	model.blocktype = new ScilabString(["d"]);
 	model.dep_ut = new ScilabBoolean([false,false]);
 
-	var exprs = strcat(z0.toString(),,"],[");
+	var exprs = strcat(z0.toString(),,";");
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([3,2]),model,exprs,gr_i);

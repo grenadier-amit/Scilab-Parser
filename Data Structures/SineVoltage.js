@@ -23,7 +23,7 @@ function SineVoltage () {
 	mo.model = new ScilabString(["SineVoltage"]);
 	mo.inputs = new ScilabString(["p"]);
 	mo.outputs = new ScilabString(["n"]);
-	mo.parameters=list(["V"],["phase"],["freqHz"],["offset"],["startTime"],list(V,ph,frq,offset,start));
+	mo.parameters=list(["V";"phase";"freqHz";"offset";"startTime"],list(V,ph,frq,offset,start));
 	model.equations=mo;
 
 	var exprs = [[V.toString()],[ph.toString()],[frq.toString()],[offset.toString()],[start.toString()]];

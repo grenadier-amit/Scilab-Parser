@@ -29,7 +29,7 @@ function EDGE_TRIGGER () {
 	model=blk.model;
 	graphics.orig = new ScilabDouble([160,0]);
 	graphics.sz = new ScilabDouble([60,40]);
-	graphics.exprs = new ScilabString(["0"],["0"]);
+	graphics.exprs = new ScilabString(["0";"0"]);
 	model.evtin = new ScilabDouble();
 	model.nzcross = new ScilabDouble([0]);
 	model.nmode = new ScilabDouble([0]);
@@ -74,7 +74,7 @@ function EDGE_TRIGGER () {
 	lnk.from = new ScilabDouble([2,1,0]);
 	lnk.to = new ScilabDouble([4,1,1]);
 	scs_m_1.objs.push(lnk);
-clear blk lnk
+	clear blk lnk
 	model=scicos_model();
 	model.sim = new ScilabString(["csuper"]);
 	model.in = new ScilabDouble([1]);

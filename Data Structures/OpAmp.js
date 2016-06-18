@@ -12,7 +12,7 @@ function OpAmp () {
 
 	var mo = modelica();
 	mo.model=model.sim;
-	mo.inputs = new ScilabString(["in_p"],["in_n"]);
+	mo.inputs = new ScilabString(["in_p";"in_n"]);
 	mo.outputs = new ScilabString(["out"]);
 	mo.parameters=list(S,Z);
 	model.equations=mo;
@@ -24,6 +24,6 @@ function OpAmp () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([3,5]),model,exprs,gr_i);
-	this.x.graphics.in_implicit = new ScilabString(["I"],["I"]);
+	this.x.graphics.in_implicit = new ScilabString(["I";"I"]);
 	this.x.graphics.out_implicit = new ScilabString(["I"]);
 }

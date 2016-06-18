@@ -11,7 +11,7 @@ function DLR () {
 
 	var D = 0;
 
-	var exprs = [["1"],["1+z"]];
+	var exprs = ["1";"1+z"];
 
 	var model = scicos_model();
 	model.sim=list("dsslti4",4);

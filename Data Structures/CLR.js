@@ -11,7 +11,7 @@ function CLR () {
 
 	var D = 0;
 
-	var exprs = [["1"],["1+s"]];
+	var exprs = ["1";"1+s"];
 
 	var model = scicos_model();
 	model.sim=list("csslti4",4);

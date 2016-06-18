@@ -21,7 +21,7 @@ function DELAYV_f () {
 	model.firing = new ScilabDouble([0,-1]);
 	model.dep_ut = new ScilabBoolean([true,false]);
 
-	var exprs = [[nin....colon_operator(toString,)],[strcat(z0(1,$-1.toString()),"],[")],[T.toString()]];
+	var exprs = [[nin....colon_operator(toString,);strcat(z0(1,$-1.toString()),";")],[T.toString()]];
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([3,2]),model,exprs,gr_i);

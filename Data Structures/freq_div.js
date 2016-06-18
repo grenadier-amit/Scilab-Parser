@@ -20,7 +20,7 @@ function freq_div () {
 	var model = blk.model;
 	graphics.orig = new ScilabDouble([0,-100]);
 	graphics.sz = new ScilabDouble([60,40]);
-	graphics.exprs = new ScilabString(["0"],["3"]);
+	graphics.exprs = new ScilabString(["0";"3"]);
 	model.dstate = new ScilabDouble([3]);
 	model.ipar = new ScilabDouble([3]);
 	graphics.pout = new ScilabDouble([7]);
@@ -55,7 +55,7 @@ function freq_div () {
 	model=blk.model;
 	graphics.orig = new ScilabDouble([100,-100]);
 	graphics.sz = new ScilabDouble([60,40]);
-	graphics.exprs = new ScilabString(["1"],["0"]);
+	graphics.exprs = new ScilabString(["1";"0"]);
 	model.ipar = new ScilabDouble([1]);
 	graphics.pin = new ScilabDouble([7]);
 	graphics.pein = new ScilabDouble([9]);
@@ -100,7 +100,7 @@ function freq_div () {
 	lnk.from = new ScilabDouble([5,2,0]);
 	lnk.to = new ScilabDouble([1,1,1]);
 	scs_m_1.objs.push(lnk);
-clear blk lnk
+	clear blk lnk
 	model=scicos_model();
 	model.sim = new ScilabString(["csuper"]);
 	model.evtin = new ScilabDouble([1]);

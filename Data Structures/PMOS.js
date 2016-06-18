@@ -26,9 +26,9 @@ function PMOS () {
 
 	var mo = modelica();
 	mo.model = new ScilabString(["PMOS"]);
-	mo.outputs = new ScilabString(["D"],["B"],["S"]);
+	mo.outputs = new ScilabString(["D";"B";"S"]);
 	mo.inputs = new ScilabString(["G"]);
-	mo.parameters=list(["W"],["L"],["Beta"],["Vt"],["K2"],["K5"],["dW"],["dL"],["RDS"],[W],[L],[Beta],[Vt],[K2],[K5],[dW],[dL],[RDS]);
+	mo.parameters=list(["W";"L";"Beta";"Vt";"K2";"K5";"dW";"dL";"RDS"],[W],[L],[Beta],[Vt],[K2],[K5],[dW],[dL],[RDS]);
 	model.equations=mo;
 	model.in=ones(size(mo.inputs,"*"),1);
 	model.out=ones(size(mo.outputs,"*"),1);
@@ -38,5 +38,5 @@ function PMOS () {
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
 	this.x.graphics.in_implicit = new ScilabString(["I"]);
-	this.x.graphics.out_implicit = new ScilabString(["I"],["I"],["I"]);
+	this.x.graphics.out_implicit = new ScilabString(["I";"I";"I"]);
 }

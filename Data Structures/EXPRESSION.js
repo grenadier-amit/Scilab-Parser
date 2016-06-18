@@ -6,7 +6,7 @@ function EXPRESSION () {
 	var out = 1;
 
 	var txt = "(u1>0)*sin(u2)^2";
-deff("%foo(u1,u2)",txt)
+	deff("%foo(u1,u2)",txt)
 
 	var [%ok1,ipar,rpar,nz] = compile_expr(%foo);
 
@@ -20,7 +20,7 @@ deff("%foo(u1,u2)",txt)
 	model.nmode=nz;
 	model.dep_ut = new ScilabBoolean([true,false]);
 
-	var exprs = [[size(in,"*".toString())],[txt],["1"]];
+	var exprs = [size(in,"*".toString());txt;"1"];
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([5,2]),model,exprs,gr_i);

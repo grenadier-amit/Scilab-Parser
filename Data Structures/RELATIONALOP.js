@@ -17,5 +17,5 @@ function RELATIONALOP () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
-	this.x.graphics.style = new ScilabString(["fontSize=13],[fontStyle=1],[displayedLabel="+label]);
+	this.x.graphics.style = new ScilabString(["fontSize=13;fontStyle=1;displayedLabel="+label]);
 }

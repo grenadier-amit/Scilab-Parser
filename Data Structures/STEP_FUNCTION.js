@@ -43,7 +43,7 @@ function STEP_FUNCTION () {
 	lnk.from = new ScilabDouble([1,1,0]);
 	lnk.to = new ScilabDouble([1,1,1]);
 	scs_m_1.objs.push(lnk);
-clear blk lnk
+	clear blk lnk
 	model=scicos_model();
 	model.sim = new ScilabString(["csuper"]);
 	model.out = new ScilabDouble([1]);

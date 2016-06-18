@@ -35,7 +35,7 @@ function CANIMXY () {
 	model.firing = new ScilabDouble();
 	model.dep_ut = new ScilabBoolean([false,false]);
 
-	var exprs = [[nbr_curves.toString()],[clrs.toString()],[siz.toString()],[win.toString()],["[]"],["[]"],[xmin.toString()],[xmax.toString()],[ymin.toString()],[ymax.toString()],[N.toString()]];
+	var exprs = [[nbr_curves.toString();clrs.toString();siz.toString();win.toString();"[]";"[]"],[xmin.toString()],[xmax.toString()],[ymin.toString()],[ymax.toString()],[N.toString()]];
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);

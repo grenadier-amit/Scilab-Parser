@@ -21,7 +21,7 @@ function CEVENTSCOPE () {
 	model.blocktype = new ScilabString(["d"]);
 	model.dep_ut = new ScilabBoolean([false,false]);
 
-	var exprs = [[sci2exp(nclock)],[strcat(sci2exp(clrs(nclock))," ")],[win.toString()],[sci2exp([])],[sci2exp(wdim)],[per.toString()]];
+	var exprs = [[sci2exp(nclock);strcat(sci2exp(clrs(nclock))," ")],[win.toString()],[sci2exp([])],[sci2exp(wdim)],[per.toString()]];
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);

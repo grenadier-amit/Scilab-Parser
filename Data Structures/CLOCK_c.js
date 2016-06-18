@@ -5,7 +5,7 @@ function CLOCK_c () {
 	evtdly.graphics.orig = new ScilabDouble([320,232]);
 	evtdly.graphics.sz = new ScilabDouble([40,40]);
 	evtdly.graphics.flip = new ScilabBoolean([true]);
-	evtdly.graphics.exprs = new ScilabString(["0.1"],["0.1"]);
+	evtdly.graphics.exprs = new ScilabString(["0.1";"0.1"]);
 	evtdly.graphics.pein = new ScilabDouble([6]);
 	evtdly.graphics.peout = new ScilabDouble([3]);
 	evtdly.model.rpar = new ScilabDouble([0.1],[0.1]);

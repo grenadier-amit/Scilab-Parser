@@ -22,7 +22,7 @@ function MCLOCK_f () {
 	clksom.graphics.orig = new ScilabDouble([457,161]);
 	clksom.graphics.sz = new ScilabDouble([16.666667,16.666667]);
 	clksom.graphics.flip = new ScilabBoolean([true]);
-	clksom.graphics.exprs = new ScilabString(["0.1"],["0.1"]);
+	clksom.graphics.exprs = new ScilabString(["0.1";"0.1"]);
 	clksom.graphics.pein = new ScilabDouble([4],[9],[0]);
 	clksom.graphics.peout = new ScilabDouble([5]);
 

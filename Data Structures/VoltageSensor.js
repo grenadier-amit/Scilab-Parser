@@ -11,7 +11,7 @@ function VoltageSensor () {
 	var mo = modelica();
 	mo.model = new ScilabString(["VoltageSensor"]);
 	mo.inputs = new ScilabString(["p"]);
-	mo.outputs = new ScilabString(["n"],["v"]);
+	mo.outputs = new ScilabString(["n";"v"]);
 	model.equations=mo;
 
 	var exprs = [];
@@ -19,5 +19,5 @@ function VoltageSensor () {
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,list(gr_i,0));
 	this.x.graphics.in_implicit = new ScilabString(["I"]);
-	this.x.graphics.out_implicit = new ScilabString(["I"],["E"]);
+	this.x.graphics.out_implicit = new ScilabString(["I";"E"]);
 }

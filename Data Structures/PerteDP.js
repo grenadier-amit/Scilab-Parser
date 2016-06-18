@@ -25,7 +25,7 @@ function PerteDP () {
 	mo.model = new ScilabString(["PerteDP"]);
 	mo.inputs = new ScilabString(["C1"]);
 	mo.outputs = new ScilabString(["C2"]);
-	mo.parameters=list(["L"],["D"],["lambda"],["z1"],["z2"],["p_rho"],[L],[D],[lambda],[z1],[z2],[p_rho]);
+	mo.parameters=list(["L";"D";"lambda";"z1";"z2";"p_rho"],[L],[D],[lambda],[z1],[z2],[p_rho]);
 	model.equations=mo;
 	model.in=ones(size(mo.inputs,"*"),1);
 	model.out=ones(size(mo.outputs,"*"),1);
