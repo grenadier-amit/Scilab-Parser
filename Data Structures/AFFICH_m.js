@@ -14,7 +14,7 @@ function AFFICH_m () {
 	var in = [1,1];
 
 	var model = scicos_model();
-	model.sim=list("affich2",4);
+	model.sim=list(new ScilabString(["affich2"]),new ScilabDouble([4]));
 	model.in=in(1,1);
 	model.in2.push(in(1,2));
 	model.evtin = new ScilabDouble([1]);
@@ -24,8 +24,9 @@ function AFFICH_m () {
 	model.firing = new ScilabDouble(, , ,],[model.dep_ut,=,[%t,%f]);
 	model.label = new ScilabString([""]);
 
-	var exprs = [[,sci2exp([model.in,model.in2])],[font.toString()],[fontsize.toString()],[colr.toString()],[nt.toString()],[nd.toString()],[0.toString(),]];
+	var exprs = [[,sci2exp([model.in,model.in2])],[string(font)],[string(fontsize)],[string(colr)],[string(nt)],[string(nd)],[string(0),]];
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([3,2]),model,exprs,gr_i);
+	return new  AfficheBlock (this.x)
 }
