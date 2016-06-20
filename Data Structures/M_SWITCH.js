@@ -9,7 +9,7 @@ function M_SWITCH () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["mswitch"]),new ScilabDouble([4]));
-	model.in=in;
+	model.in1.push(new ScilabDouble([in1]));
 	model.out = new ScilabDouble([-1]);
 	model.ipar=new ScilabDouble([ipar]);
 	model.blocktype = new ScilabString(["c"]);

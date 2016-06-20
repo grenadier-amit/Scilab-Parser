@@ -11,7 +11,7 @@ function VARIABLE_DELAY () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["variable_delay"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([nin],[1]);
+	model.in1 = new ScilabDouble([nin],[1]);
 	model.out=new ScilabDouble([nin]);
 	model.rpar = new ScilabDouble([T,init]);
 	model.ipar=new ScilabDouble([N]);

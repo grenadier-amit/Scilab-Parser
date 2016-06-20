@@ -2,7 +2,7 @@ function Ground () {
 
 
 	var model = scicos_model();
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble();
 	model.sim = new ScilabString(["Ground"]);
 	model.blocktype = new ScilabString(["c"]);

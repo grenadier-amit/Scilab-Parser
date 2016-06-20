@@ -3,7 +3,7 @@ function LOOKUP_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["lookup"]);
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 	model.rpar = new ScilabDouble([-2],[-1],[1],[2],[-1],[1],[-1],[1]);
 	model.blocktype = new ScilabString(["c"]);

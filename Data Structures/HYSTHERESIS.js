@@ -11,7 +11,7 @@ function HYSTHERESIS () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["hystheresis"]),new ScilabDouble([4]));
-	model.in=in;
+	model.in1.push(new ScilabDouble([in1]));
 	model.out = new ScilabDouble([1]);
 	model.rpar=new ScilabDouble([rpar]);
 	model.nzcross=new ScilabDouble([nzz]);

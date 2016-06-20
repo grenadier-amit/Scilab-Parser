@@ -2,7 +2,7 @@ function CurrentSensor () {
 
 
 	var model = scicos_model();
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1],[,1]);
 	model.sim = new ScilabString(["CurrentSensor"]);
 	model.blocktype = new ScilabString(["c"]);

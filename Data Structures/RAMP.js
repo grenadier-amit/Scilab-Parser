@@ -11,7 +11,7 @@ function RAMP () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["ramp"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble();
+	model.in1 = new ScilabDouble();
 	model.out = new ScilabDouble([1]);
 	model.rpar=rpar;
 	model.blocktype = new ScilabString(["c"]);

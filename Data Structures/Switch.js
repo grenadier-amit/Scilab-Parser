@@ -20,7 +20,7 @@ function Switch () {
 	mo.outputs = new ScilabString(["n"]);
 	mo.parameters=list(S,Z);
 	model.equations=mo;
-	model.in=ones(size(mo.inputs,"*"),1);
+	model.in1.push(ones(size(mo.inputs,"*"),1));
 	model.out=ones(size(mo.outputs,"*"),1);
 	model.rpar=Z;
 

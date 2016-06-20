@@ -17,7 +17,7 @@ function BPLATFORM () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["bplatform2"]),new ScilabDouble([5]));
-	model.in = new ScilabDouble([1],[1]);
+	model.in1 = new ScilabDouble([1],[1]);
 	model.evtin = new ScilabDouble([1]);
 	model.dstate = new ScilabDouble([0]);
 	model.rpar = new ScilabDouble([plen],[csiz],[phi],[xmin],[xmax],[ymin],[ymax]);

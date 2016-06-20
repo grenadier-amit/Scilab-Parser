@@ -23,7 +23,7 @@ function AUTOMAT () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["automat"]),new ScilabDouble([10004]));
-	model.in = new ScilabDouble([2*NX+1],[2*NX+1]);
+	model.in1 = new ScilabDouble([2*NX+1],[2*NX+1]);
 	model.out = new ScilabDouble([2],[2*NX]);
 	model.state=ones(2*NX,1);
 	model.nzcross = new ScilabDouble([1]);

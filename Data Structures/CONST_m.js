@@ -5,7 +5,7 @@ function CONST_m () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["cstblk4"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble();
+	model.in1 = new ScilabDouble();
 	model.out=size(C,1);
 	model.in2 = new ScilabDouble();
 	model.out2.push(size(C,2));

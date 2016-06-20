@@ -9,7 +9,7 @@ function RATELIMITER () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["ratelimiter"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 	model.rpar=rpar;
 	model.blocktype = new ScilabString(["c"]);

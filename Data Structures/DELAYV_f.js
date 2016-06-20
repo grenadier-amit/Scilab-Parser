@@ -11,7 +11,7 @@ function DELAYV_f () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["delayv"]),new ScilabDouble([1]));
-	model.in = new ScilabDouble([nin],[1]);
+	model.in1 = new ScilabDouble([nin],[1]);
 	model.out=new ScilabDouble([nin]);
 	model.evtin = new ScilabDouble([1]);
 	model.evtout = new ScilabDouble([1],[1]);

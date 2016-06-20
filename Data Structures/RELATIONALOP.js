@@ -7,7 +7,7 @@ function RELATIONALOP () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["relationalop"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([1],[1]);
+	model.in1 = new ScilabDouble([1],[1]);
 	model.out = new ScilabDouble([1]);
 	model.ipar=new ScilabDouble([ipar]);
 	model.blocktype = new ScilabString(["c"]);

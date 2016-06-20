@@ -11,7 +11,7 @@ function TIME_DELAY () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["time_delay"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([nin]);
+	model.in1 = new ScilabDouble([nin]);
 	model.out=new ScilabDouble([nin]);
 	model.rpar = new ScilabDouble([T,init]);
 	model.ipar=new ScilabDouble([N]);

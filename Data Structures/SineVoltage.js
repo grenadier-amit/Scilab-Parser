@@ -2,7 +2,7 @@ function SineVoltage () {
 
 
 	var model = scicos_model();
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 
 	var V = 1;

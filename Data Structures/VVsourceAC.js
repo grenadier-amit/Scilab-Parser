@@ -2,7 +2,7 @@ function VVsourceAC () {
 
 
 	var model = scicos_model();
-	model.in = new ScilabDouble([1],[1]);
+	model.in1 = new ScilabDouble([1],[1]);
 	model.out = new ScilabDouble([1]);
 
 	var VA = 220;

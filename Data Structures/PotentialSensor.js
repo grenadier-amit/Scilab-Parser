@@ -2,7 +2,7 @@ function PotentialSensor () {
 
 
 	var model = scicos_model();
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 	model.rpar = new ScilabDouble();
 	model.sim = new ScilabString(["PotentialSensor"]);

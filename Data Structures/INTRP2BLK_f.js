@@ -9,7 +9,7 @@ function INTRP2BLK_f () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["intrp2"]),new ScilabDouble([1]));
-	model.in = new ScilabDouble([1],[1]);
+	model.in1 = new ScilabDouble([1],[1]);
 	model.out = new ScilabDouble([1]);
 	model.rpar = new ScilabDouble([a],[b],[...c]);
 	model.ipar = new ScilabDouble([2],[2]);

@@ -7,7 +7,7 @@ function MATLU () {
 
 	var funtyp = 4;
 	model.sim=list(function_name,funtyp);
-	model.in = new ScilabDouble([-1]);
+	model.in1 = new ScilabDouble([-1]);
 	model.in2 = new ScilabDouble([-1]);
 	model.intyp = new ScilabDouble([1]);
 	model.out = new ScilabDouble([-1],[-1]);

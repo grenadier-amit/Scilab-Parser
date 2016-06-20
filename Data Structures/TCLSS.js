@@ -11,7 +11,7 @@ function TCLSS () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["tcslti4"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([in],[nx]);
+	model.in1 = new ScilabDouble([in1],[nx]);
 	model.out=new ScilabDouble([out]);
 	model.evtin = new ScilabDouble([1]);
 	model.state=new ScilabDouble([x0]);

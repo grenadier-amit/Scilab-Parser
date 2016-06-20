@@ -23,8 +23,8 @@ function scifunc_block_m () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["scifunc"]),new ScilabDouble([3]));
-	model.in=in;
-	model.in2.push(in);
+	model.in1.push(new ScilabDouble([in1]));
+	model.in2.push(new ScilabDouble([in1]));
 	model.intyp=new ScilabDouble([it]);
 	model.out=new ScilabDouble([out]);
 	model.out2.push(new ScilabDouble([out]));
@@ -40,7 +40,7 @@ function scifunc_block_m () {
 	model.firing=auto;
 	model.dep_ut = new ScilabBoolean([true,false]);
 
-	var exprs = list([sci2exp([in,in])],[sci2exp([out,out])],[sci2exp(clkin)],[sci2exp(clkout);
+	var exprs = list([sci2exp([in1,in])],[sci2exp([out,out])],[sci2exp(clkin)],[sci2exp(clkout);
 	strcat(sci2exp(x0));strcat(sci2exp(z0));
 
 	var strcat(sci2exp(rpar));sci2exp(auto);sci2exp(0)],list("y1 = sin(u1)"," "," ","y1=sin(u1)"," "," "," "));

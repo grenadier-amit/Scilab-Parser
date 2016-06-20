@@ -9,9 +9,9 @@ function RELAY_f () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["relay"]),new ScilabDouble([2]));
-	model.in=in;
+	model.in1.push(in1);
 	model.out = new ScilabDouble([-1]);
-	model.evtin=ones(in);
+	model.evtin=ones(in1);
 	model.dstate=new ScilabDouble([i0]);
 	model.blocktype = new ScilabString(["c"]);
 	model.firing = new ScilabDouble();

@@ -3,7 +3,7 @@ function EVTVARDLY () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["evtvardly"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.evtin = new ScilabDouble([1]);
 	model.evtout = new ScilabDouble([1]);
 	model.blocktype = new ScilabString(["d"]);

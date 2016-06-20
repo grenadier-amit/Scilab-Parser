@@ -2,7 +2,7 @@ function VanneReglante () {
 
 
 	var model = scicos_model();
-	model.in = new ScilabDouble([1],[1]);
+	model.in1 = new ScilabDouble([1],[1]);
 	model.out = new ScilabDouble([1]);
 
 	var Cvmax = 8005.42;
@@ -19,7 +19,7 @@ function VanneReglante () {
 	mo.outputs = new ScilabString(["C2"]);
 	mo.parameters=list(new ScilabString(["Cvmax";"p_rho"]),[Cvmax],[p_rho]);
 	model.equations=mo;
-	model.in=ones(size(mo.inputs,"*"),1);
+	model.in1.push(ones(size(mo.inputs,"*"),1));
 	model.out=ones(size(mo.outputs,"*"),1);
 
 	var exprs = [[string(Cvmax)],[string(p_rho)]];

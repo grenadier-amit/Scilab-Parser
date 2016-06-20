@@ -7,7 +7,7 @@ function GAINBLK_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["gain"]);
-	model.in=in;
+	model.in1.push(new ScilabDouble([in1]));
 	model.out=out;
 	model.rpar=new ScilabDouble([gain]);
 	model.blocktype = new ScilabString(["c"]);

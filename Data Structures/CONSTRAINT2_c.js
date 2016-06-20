@@ -9,7 +9,7 @@ function CONSTRAINT2_c () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["constraint_c"]),new ScilabDouble([10004]));
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1],[1]);
 	model.state = new ScilabDouble([x0],[xd0]);
 	model.ipar=new ScilabDouble([id]);

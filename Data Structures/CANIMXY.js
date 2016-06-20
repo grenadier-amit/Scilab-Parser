@@ -25,7 +25,7 @@ function CANIMXY () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["canimxy"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([1],[1]);
+	model.in1 = new ScilabDouble([1],[1]);
 	model.in2 = new ScilabDouble([1],[1]);
 	model.intyp = new ScilabDouble([1],[1]);
 	model.evtin = new ScilabDouble([1]);

@@ -5,7 +5,7 @@ function GENSIN_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["gensin"]);
-	model.in = new ScilabDouble();
+	model.in1 = new ScilabDouble();
 	model.out = new ScilabDouble([1]);
 	model.out2 = new ScilabDouble([1]);
 	model.outtyp = new ScilabDouble([1]);

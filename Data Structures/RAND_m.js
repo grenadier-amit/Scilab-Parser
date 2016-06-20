@@ -15,7 +15,7 @@ function RAND_m () {
 
 	var model = scicos_model();
 	model.sim=list(function_name,funtyp);
-	model.in = new ScilabDouble();
+	model.in1 = new ScilabDouble();
 	model.in2 = new ScilabDouble();
 	model.intyp = new ScilabDouble();
 	model.out = new ScilabDouble([1]);

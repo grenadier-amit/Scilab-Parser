@@ -30,7 +30,7 @@ function NMOS () {
 	mo.inputs = new ScilabString(["G"]);
 	mo.parameters=list(new ScilabString(["W";"L";"Beta";"Vt";"K2";"K5";"dW";"dL";"RDS"]),[W],[L],[Beta],[Vt],[K2],[K5],[dW],[dL],[RDS]);
 	model.equations=mo;
-	model.in=ones(size(mo.inputs,"*"),1);
+	model.in1.push(ones(size(mo.inputs,"*"),1));
 	model.out=ones(size(mo.outputs,"*"),1);
 
 	var exprs = [[string(W)],[string(L)],[string(Beta)],[string(Vt)],[string(K2)],[string(K5)],[string(dW)],[string(dL)],[string(RDS)]];

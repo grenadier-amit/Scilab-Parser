@@ -7,7 +7,7 @@ function SHIFT () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["shift_32_LA"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([-1]);
+	model.in1 = new ScilabDouble([-1]);
 	model.out = new ScilabDouble([-1]);
 	model.in2 = new ScilabDouble([-2]);
 	model.out2 = new ScilabDouble([-2]);

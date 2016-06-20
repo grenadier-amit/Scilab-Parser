@@ -15,7 +15,7 @@ function CLR () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["csslti4"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 	model.state=new ScilabDouble([x0]);
 	model.rpar = new ScilabDouble([...colon_operator(A,:)],[...B],[C(,)],[...D]);

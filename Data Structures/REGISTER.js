@@ -5,7 +5,7 @@ function REGISTER () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["delay4"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 	model.evtin = new ScilabDouble([1]);
 	model.dstate=z0;

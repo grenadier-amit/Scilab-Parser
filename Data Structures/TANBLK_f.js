@@ -5,12 +5,12 @@ function TANBLK_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["tanblk"]);
-	model.in=in;
-	model.out=in;
+	model.in1.push(new ScilabDouble([in1]));
+	model.out=new ScilabDouble([in1]);
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([true,false]);
 
-	var exprs = sci2exp(in);
+	var exprs = sci2exp(in1);
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);

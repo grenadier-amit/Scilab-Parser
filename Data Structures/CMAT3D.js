@@ -18,7 +18,7 @@ function CMAT3D () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["cmat3d"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([-1]);
+	model.in1 = new ScilabDouble([-1]);
 	model.in2 = new ScilabDouble([-2]);
 	model.intyp = new ScilabDouble([1]);
 	model.evtin = new ScilabDouble([1]);

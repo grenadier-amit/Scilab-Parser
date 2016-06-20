@@ -3,7 +3,7 @@ function TrigFun () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["sin_blk"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([-1]);
+	model.in1 = new ScilabDouble([-1]);
 	model.out = new ScilabDouble([-1]);
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([true,false]);

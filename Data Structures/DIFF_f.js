@@ -5,7 +5,7 @@ function DIFF_f () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["diffblk"]),new ScilabDouble([10001]));
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 	model.state=new ScilabDouble([x0]);
 	model.blocktype = new ScilabString(["c"]);

@@ -6,7 +6,7 @@ function Bache () {
 	var out = 3;
 
 	var model = scicos_model();
-	model.in = new ScilabDouble([-(1:in)']);
+	model.in1 = new ScilabDouble([-(1:in1)']);
 	model.out = new ScilabDouble([-(1:out)']);
 
 	var Patm = 1.013E5;
@@ -37,7 +37,7 @@ function Bache () {
 	mo.outputs = new ScilabString(["Cs1" "Cs2" "yNiveau"]);
 	mo.parameters=list(new ScilabString(["Patm";"A";"ze1";"ze2";"zs1";"zs2";"z0";"T0";"p_rho"]),[Patm],[A],[ze1],[ze2],[zs1],[zs2],[z0],[T0],[p_rho]);
 	model.equations=mo;
-	model.in=ones(size(mo.inputs,"*"),1);
+	model.in1.push(ones(size(mo.inputs,"*"),1));
 	model.out=ones(size(mo.outputs,"*"),1);
 
 	var exprs = [[string(Patm)],[string(A)],[string(ze1)],[string(ze2)],[string(zs1)],[string(zs2)],[string(z0)],[string(T0)],[string(p_rho)]];

@@ -10,7 +10,7 @@ function MATCATV () {
 	var funtyp = 4;
 	model.sim=list(function_name,funtyp);
 	model.in2 = new ScilabDouble([-1],[-1]);
-	model.in = new ScilabDouble([-2],[-3]);
+	model.in1 = new ScilabDouble([-2],[-3]);
 	model.intyp = new ScilabDouble([-1,-1]);
 	model.out = new ScilabDouble([0]);
 	model.out2 = new ScilabDouble([-1]);

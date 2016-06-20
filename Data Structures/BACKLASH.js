@@ -5,7 +5,7 @@ function BACKLASH () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["backlash"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 	model.rpar = new ScilabDouble([0],[1]);
 	model.nzcross = new ScilabDouble([2]);

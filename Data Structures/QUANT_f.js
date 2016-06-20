@@ -7,7 +7,7 @@ function QUANT_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["qzrnd"]);
-	model.in = new ScilabDouble([-1]);
+	model.in1 = new ScilabDouble([-1]);
 	model.out = new ScilabDouble([-1]);
 	model.rpar=new ScilabDouble([pas]);
 	model.ipar=new ScilabDouble([meth]);

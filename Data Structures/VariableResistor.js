@@ -11,7 +11,7 @@ function VariableResistor () {
 	mo.inputs = new ScilabString(["p","R"]);
 	mo.outputs = new ScilabString(["n"]);
 	model.equations=mo;
-	model.in=ones(size(mo.inputs,"*"),1);
+	model.in1.push(ones(size(mo.inputs,"*"),1));
 	model.out=ones(size(mo.outputs,"*"),1);
 
 	var exprs = [];

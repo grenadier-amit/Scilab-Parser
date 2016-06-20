@@ -82,7 +82,7 @@ function Extract_Activation () {
 	clear blk lnk
 	model=scicos_model();
 	model.sim = new ScilabString(["csuper"]);
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.evtout = new ScilabDouble([1]);
 	model.rpar=scs_m_1;
 

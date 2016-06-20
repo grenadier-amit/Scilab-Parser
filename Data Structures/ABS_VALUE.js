@@ -5,7 +5,7 @@ function ABS_VALUE () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["absolute_value"]),new ScilabDouble([4]));
-	model.in=new ScilabDouble([nu]);
+	model.in1.push(new ScilabDouble([nu]));
 	model.out=new ScilabDouble([nu]);
 	model.nzcross=new ScilabDouble([nu]);
 	model.nmode=new ScilabDouble([nu]);

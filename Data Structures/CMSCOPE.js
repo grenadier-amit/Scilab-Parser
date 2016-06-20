@@ -25,16 +25,16 @@ function CMSCOPE () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["cmscope"]),new ScilabDouble([4]));
-	model.in=in;
+	model.in1.push(new ScilabDouble([in1]));
 	model.in2 = new ScilabDouble([1],[1]);
 	model.intyp = new ScilabDouble([1],[1]);
 	model.evtin = new ScilabDouble([1]);
 	model.rpar = new ScilabDouble([0],[...period],[...yy]);
-	model.ipar = new ScilabDouble([win;...colon_operator(size,in,"*")],[N],[...wpos],[...wdim],[...in],[clrs(1,sum(in))]);
+	model.ipar = new ScilabDouble([win;...colon_operator(size,in1,"*")],[N],[...wpos],[...wdim],[...in1],[clrs(1,sum(in1))]);
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([true,false]);
 
-	var exprs = [[strcat(string(in)," ");strcat(string(clrs)," ");string(win);sci2exp([]);sci2exp([]);strcat(string(ymin)," ");strcat(string(ymax)," ");strcat(string(per)," ")],[string(N)],[string(0)],[emptystr()]];
+	var exprs = [[strcat(string(in1)," ");strcat(string(clrs)," ");string(win);sci2exp([]);sci2exp([]);strcat(string(ymin)," ");strcat(string(ymax)," ");strcat(string(per)," ")],[string(N)],[string(0)],[emptystr()]];
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);

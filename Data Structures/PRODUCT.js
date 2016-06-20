@@ -5,7 +5,7 @@ function PRODUCT () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["product"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([-1],[-1]);
+	model.in1 = new ScilabDouble([-1],[-1]);
 	model.out = new ScilabDouble([-1]);
 	model.ipar=new ScilabDouble([sgn]);
 	model.blocktype = new ScilabString(["c"]);

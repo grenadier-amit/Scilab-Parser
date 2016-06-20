@@ -2,7 +2,7 @@ function PerteDP () {
 
 
 	var model = scicos_model();
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 
 	var L = 10;
@@ -27,7 +27,7 @@ function PerteDP () {
 	mo.outputs = new ScilabString(["C2"]);
 	mo.parameters=list(new ScilabString(["L";"D";"lambda";"z1";"z2";"p_rho"]),[L],[D],[lambda],[z1],[z2],[p_rho]);
 	model.equations=mo;
-	model.in=ones(size(mo.inputs,"*"),1);
+	model.in1.push(ones(size(mo.inputs,"*"),1));
 	model.out=ones(size(mo.outputs,"*"),1);
 
 	var exprs = [[string(L)],[string(D)],[string(lambda)],[string(z1)],[string(z2)],[string(p_rho)]];

@@ -11,7 +11,7 @@ function TOWS_c () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["tows_c"]),,new ScilabDouble([4]));
-	model.in = new ScilabDouble([nu]);
+	model.in1 = new ScilabDouble([nu]);
 	model.in2 = new ScilabDouble([-2]);
 	model.intyp = new ScilabDouble([-1]);
 	model.out = new ScilabDouble();

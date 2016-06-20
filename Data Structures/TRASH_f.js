@@ -5,7 +5,7 @@ function TRASH_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["trash"]);
-	model.in=in;
+	model.in1.push(new ScilabDouble([in1]));
 	model.evtin = new ScilabDouble([1]);
 	model.blocktype = new ScilabString(["d"]);
 	model.dep_ut = new ScilabBoolean([false,false]);

@@ -11,8 +11,8 @@ function DOLLAR_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["dollar"]);
-	model.in=in;
-	model.out=in;
+	model.in1.push(new ScilabDouble([in1]));
+	model.out=new ScilabDouble([in1]);
 	model.evtin = new ScilabDouble([1-inh]);
 	model.dstate=new ScilabDouble([z]);
 	model.blocktype = new ScilabString(["d"]);

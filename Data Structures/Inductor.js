@@ -2,7 +2,7 @@ function Inductor () {
 
 
 	var model = scicos_model();
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 
 	var L = 1.d-5;

@@ -20,7 +20,7 @@ function PuitsP () {
 	mo.inputs = new ScilabString(["C"]);
 	mo.parameters=list(new ScilabString(["P0";"T0";"H0";"option_temperature"]),[P0],[T0],[H0],[option_temperature]);
 	model.equations=mo;
-	model.in=ones(size(mo.inputs,"*"),1);
+	model.in1.push(ones(size(mo.inputs,"*"),1));
 
 	var exprs = [[string(P0)],[string(T0)],[string(H0)],[string(option_temperature)]];
 

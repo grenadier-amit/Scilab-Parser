@@ -5,7 +5,7 @@ function DEMUX_f () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["demux"]),new ScilabDouble([1]));
-	model.in = new ScilabDouble([0]);
+	model.in1 = new ScilabDouble([0]);
 	model.out=-...transpose([1:out]);
 	model.ipar=new ScilabDouble([out]);
 	model.blocktype = new ScilabString(["c"]);

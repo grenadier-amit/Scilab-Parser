@@ -5,8 +5,8 @@ function INVBLK () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["invblk4"]),new ScilabDouble([4]));
-	model.in=in;
-	model.out=in;
+	model.in1.push(new ScilabDouble([in1]));
+	model.out=new ScilabDouble([in1]);
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([true,false]);
 

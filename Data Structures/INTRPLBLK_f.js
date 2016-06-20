@@ -7,7 +7,7 @@ function INTRPLBLK_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["intrpl"]);
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 	model.rpar = new ScilabDouble([a],[b]);
 	model.blocktype = new ScilabString(["c"]);

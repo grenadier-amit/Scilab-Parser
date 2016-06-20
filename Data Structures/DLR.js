@@ -15,7 +15,7 @@ function DLR () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["dsslti4"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 	model.evtin = new ScilabDouble([1]);
 	model.dstate=...x0;

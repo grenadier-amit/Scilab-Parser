@@ -15,7 +15,7 @@ function Resistor () {
 	mo.outputs = new ScilabString(["n"]);
 	mo.parameters=list(new ScilabString(["R"]),list(R));
 	model.equations=mo;
-	model.in=ones(size(mo.inputs,"*"),1);
+	model.in1.push(ones(size(mo.inputs,"*"),1));
 	model.out=ones(size(mo.outputs,"*"),1);
 
 	var exprs = string(R);

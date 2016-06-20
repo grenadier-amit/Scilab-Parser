@@ -5,7 +5,7 @@ function MAX_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["maxblk"]);
-	model.in=in;
+	model.in1.push(new ScilabDouble([in1]));
 	model.out = new ScilabDouble([1]);
 	model.dstate = new ScilabDouble([0],[0]);
 	model.blocktype = new ScilabString(["c"]);

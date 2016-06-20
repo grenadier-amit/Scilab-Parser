@@ -4,7 +4,7 @@ function MAXMIN () {
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["minmax"]),new ScilabDouble([4]));
 	model.out = new ScilabDouble([1]);
-	model.in = new ScilabDouble([-1]);
+	model.in1 = new ScilabDouble([-1]);
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([true,false]);
 	model.ipar = new ScilabDouble([0]);

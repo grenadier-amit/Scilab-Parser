@@ -5,7 +5,7 @@ function ConstantVoltage () {
 
 	var model = scicos_model();
 	model.rpar=new ScilabDouble([V]);
-	model.in = new ScilabDouble([1],[model.out=1]);
+	model.in1 = new ScilabDouble([1],[model.out=1]);
 	model.sim = new ScilabString(["ConstantVoltage"]);
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([false,false]);

@@ -19,7 +19,7 @@ function CSCOPE () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["cscope"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([-1]);
+	model.in1 = new ScilabDouble([-1]);
 	model.in2 = new ScilabDouble([1]);
 	model.evtin = new ScilabDouble([1]);
 	model.rpar = new ScilabDouble([0],[ymin],[ymax],[per]);

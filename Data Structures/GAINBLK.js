@@ -9,7 +9,7 @@ function GAINBLK () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["gainblk"]),new ScilabDouble([4]));
-	model.in=in;
+	model.in1.push(new ScilabDouble([in1]));
 	model.out=out;
 	model.in2.push(new ScilabDouble([in2]));
 	model.out2.push(out2);

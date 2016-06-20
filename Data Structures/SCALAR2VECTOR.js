@@ -6,7 +6,7 @@ function SCALAR2VECTOR () {
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["scalar2vector"]),new ScilabDouble([4]));
 	model.out=new ScilabDouble([nout]);
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([true,false]);
 

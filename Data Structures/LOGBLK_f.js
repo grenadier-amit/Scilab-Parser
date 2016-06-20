@@ -7,7 +7,7 @@ function LOGBLK_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["logblk"]);
-	model.in = new ScilabDouble([-1]);
+	model.in1 = new ScilabDouble([-1]);
 	model.out = new ScilabDouble([-1]);
 	model.rpar=new ScilabBoolean([a]);
 	model.blocktype = new ScilabString(["c"]);

@@ -10,7 +10,7 @@ function INTEGRAL_m () {
 	var model = scicos_model();
 	model.state = new ScilabDouble([0]);
 	model.sim=list(new ScilabString(["integral_func"]),new ScilabDouble([4]));
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 	model.in2 = new ScilabDouble([1]);
 	model.out2 = new ScilabDouble([1]);

@@ -7,7 +7,7 @@ function NRMSOM_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["junk"]);
-	model.in=in;
+	model.in1.push(in1);
 	model.out = new ScilabDouble([-1]);
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([true,false]);

@@ -11,12 +11,12 @@ function SUPER_f () {
 	var out = OUT_f("define");
 	out.graphics.orig = new ScilabDouble([240,,40]);
 	out.graphics.sz = new ScilabDouble([20,,20]);
-	scs.objs.push(in);
+	scs.objs.push(in1);
 	scs.objs.push(out);
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["super"]);
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.out = new ScilabDouble([1]);
 	model.rpar=scs;
 	model.blocktype = new ScilabString(["h"]);

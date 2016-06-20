@@ -4,7 +4,7 @@ function NEGTOPOS_f () {
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["zcross"]),new ScilabDouble([1]));
 	model.nzcross = new ScilabDouble([1]);
-	model.in = new ScilabDouble([1]);
+	model.in1 = new ScilabDouble([1]);
 	model.evtout = new ScilabDouble([1]);
 	model.rpar = new ScilabDouble([-1],[-1],[0],[-1]);
 	model.blocktype = new ScilabString(["z"]);

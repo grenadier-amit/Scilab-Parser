@@ -17,7 +17,7 @@ function CLSS () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["csslti4"]),new ScilabDouble([4]));
-	model.in=in;
+	model.in1.push(new ScilabDouble([in1]));
 	model.out=new ScilabDouble([out]);
 	model.state=new ScilabDouble([x0]);
 	model.rpar = new ScilabDouble([...colon_operator(A,:)],[...B],[C(,)],[...D]);

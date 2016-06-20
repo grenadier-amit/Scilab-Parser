@@ -13,7 +13,7 @@ function BARXY () {
 	model.sim=list(new ScilabString(["BARXY_sim"]),,new ScilabDouble([5]));
 	model.blocktype = new ScilabString(["d"]);
 	model.dep_ut = new ScilabBoolean([true,false]);
-	model.in = new ScilabDouble([-1],[-1]);
+	model.in1 = new ScilabDouble([-1],[-1]);
 	model.intyp = new ScilabDouble([1]);
 	model.out = new ScilabDouble();
 	model.evtin = new ScilabDouble([1]);

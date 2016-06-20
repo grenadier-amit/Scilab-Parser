@@ -4,7 +4,7 @@ function PDE () {
 	var model = scicos_model();
 	model.state=zeros(10,1);
 	model.sim=list(new ScilabString(["PDE"]),new ScilabDouble([0]));
-	model.in = new ScilabDouble([1],[1],[1],[1],[1]);
+	model.in1 = new ScilabDouble([1],[1],[1],[1],[1]);
 	model.out = new ScilabDouble([10],[0]);
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([false,true]);
