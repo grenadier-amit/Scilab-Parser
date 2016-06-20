@@ -39,5 +39,5 @@ function BOUNCEXY () {
 	var z(6*(i-1)+5) = 0.000;
 
 	var z(6*(i-1)+6) = 64.0*360.000;
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

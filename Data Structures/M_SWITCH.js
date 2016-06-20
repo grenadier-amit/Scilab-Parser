@@ -1,7 +1,7 @@
 function M_SWITCH () {
 
 
-	var in = [[1],[-1],[-1]];
+	var in1 = [[1],[-1],[-1]];
 
 	var ipar = [[1],[3]];
 
@@ -9,7 +9,7 @@ function M_SWITCH () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["mswitch"]),new ScilabDouble([4]));
-	model.in=new ScilabDouble([in]);
+	model.in=in;
 	model.out = new ScilabDouble([-1]);
 	model.ipar=new ScilabDouble([ipar]);
 	model.blocktype = new ScilabString(["c"]);
@@ -19,5 +19,5 @@ function M_SWITCH () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2.5,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

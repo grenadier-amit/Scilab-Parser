@@ -1,7 +1,7 @@
 function scifunc_block_m () {
 
 
-	var in = 1;
+	var in1 = 1;
 
 	var out = 1;
 
@@ -23,8 +23,8 @@ function scifunc_block_m () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["scifunc"]),new ScilabDouble([3]));
-	model.in=new ScilabDouble([in]);
-	model.in2.push(new ScilabDouble([in]));
+	model.in=in;
+	model.in2.push(in);
 	model.intyp=new ScilabDouble([it]);
 	model.out=new ScilabDouble([out]);
 	model.out2.push(new ScilabDouble([out]));
@@ -47,5 +47,5 @@ function scifunc_block_m () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([4,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

@@ -1,7 +1,7 @@
 function EXPRESSION () {
 
 
-	var in = [[1],[1]];
+	var in1 = [[1],[1]];
 
 	var out = 1;
 
@@ -12,7 +12,7 @@ function EXPRESSION () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["evaluate_expr"]),new ScilabDouble([4]));
-	model.in=new ScilabDouble([in]);
+	model.in=in;
 	model.out=new ScilabDouble([out]);
 	model.rpar=rpar;
 	model.ipar=ipar;
@@ -24,5 +24,5 @@ function EXPRESSION () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([5,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

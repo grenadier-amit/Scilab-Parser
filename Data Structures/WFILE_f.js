@@ -1,7 +1,7 @@
 function WFILE_f () {
 
 
-	var in = 1;
+	var in1 = 1;
 
 	var nin = sum(in);
 
@@ -15,7 +15,7 @@ function WFILE_f () {
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["writef"]);
-	model.in=new ScilabDouble([in]);
+	model.in=in;
 	model.evtin = new ScilabDouble([1]);
 	model.dstate = new ScilabDouble([-1],[lunit],[zeros((nin+1)*N,1)]);
 	model.ipar = new ScilabDouble([length(fname)],[length(frmt)],[0],[N],[_str2code(fname)],[_str2code(frmt)]);
@@ -26,5 +26,5 @@ function WFILE_f () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([3,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

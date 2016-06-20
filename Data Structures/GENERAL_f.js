@@ -3,14 +3,14 @@ function GENERAL_f () {
 
 	var rpar = [[0],[0],[0],[0]];
 
-	var in = 1;
+	var in1 = 1;
 
 	var out = 1;
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["zcross"]),new ScilabDouble([1]));
-	model.nzcross=new ScilabDouble([in]);
-	model.in=new ScilabDouble([in]);
+	model.nzcross=in;
+	model.in=in;
 	model.evtout=ones(out,1);
 	model.rpar = new ScilabDouble([0],[0],[0],[0]);
 	model.blocktype = new ScilabString(["z"]);
@@ -21,5 +21,5 @@ function GENERAL_f () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([3,2]),model,exprs,,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

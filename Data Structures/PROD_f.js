@@ -8,5 +8,5 @@ function PROD_f () {
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([true,false]);
 	this.x=new standard_define(new ScilabDouble([1,1]),model,[],[]);
-	return new  RoundBlock (this.x)
+	return new RoundBlock(this.x)
 }

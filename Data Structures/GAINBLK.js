@@ -3,13 +3,13 @@ function GAINBLK () {
 
 	var gain = 1;
 
-	var in = -1],[out=-1;
+	var in1 = -1],[out=-1;
 
 	var in2 = -2],[out2=-2;
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["gainblk"]),new ScilabDouble([4]));
-	model.in=new ScilabDouble([in]);
+	model.in=in;
 	model.out=out;
 	model.in2.push(new ScilabDouble([in2]));
 	model.out2.push(out2);
@@ -21,5 +21,5 @@ function GAINBLK () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

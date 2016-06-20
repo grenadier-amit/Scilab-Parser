@@ -20,5 +20,5 @@ function CurrentSensor () {
 	this.x=standard_define([2,2],model,exprs,list(gr_i,0));
 	this.x.graphics.in_implicit = new ScilabString(["I"]);
 	this.x.graphics.out_implicit = new ScilabString(["I";"E"]);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

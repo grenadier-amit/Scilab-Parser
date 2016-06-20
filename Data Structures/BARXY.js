@@ -23,5 +23,5 @@ function BARXY () {
 	this.x.graphics.in_implicit = new ScilabString(["E",,"E"]);
 	this.x.graphics.out_implicit = new ScilabDouble();
 	this.x.graphics.exprs = new ScilabString(["-15";"15";"-15";"15";"1"]);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

@@ -1,7 +1,7 @@
 function LOGICAL_OP () {
 
 
-	var in = [[-1],[-1]];
+	var in1 = [[-1],[-1]];
 
 	var ipar = [0];
 
@@ -19,5 +19,5 @@ function LOGICAL_OP () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

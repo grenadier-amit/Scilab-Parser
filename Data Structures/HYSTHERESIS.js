@@ -1,7 +1,7 @@
 function HYSTHERESIS () {
 
 
-	var in = 1;
+	var in1 = 1;
 
 	var ipar = [0];
 
@@ -11,7 +11,7 @@ function HYSTHERESIS () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["hystheresis"]),new ScilabDouble([4]));
-	model.in=new ScilabDouble([in]);
+	model.in=in;
 	model.out = new ScilabDouble([1]);
 	model.rpar=new ScilabDouble([rpar]);
 	model.nzcross=new ScilabDouble([nzz]);
@@ -23,5 +23,5 @@ function HYSTHERESIS () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

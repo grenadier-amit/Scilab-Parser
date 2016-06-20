@@ -12,5 +12,5 @@ function SUM_f () {
 
 	var exprs = [];
 	this.x=new standard_define(new ScilabDouble([1,1]),model,exprs,gr_i);
-	return new  RoundBlock (this.x)
+	return new RoundBlock(this.x)
 }

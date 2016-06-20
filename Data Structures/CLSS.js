@@ -11,13 +11,13 @@ function CLSS () {
 
 	var D = 0;
 
-	var in = 1;
+	var in1 = 1;
 
 	var out = 1;
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["csslti4"]),new ScilabDouble([4]));
-	model.in=new ScilabDouble([in]);
+	model.in=in;
 	model.out=new ScilabDouble([out]);
 	model.state=new ScilabDouble([x0]);
 	model.rpar = new ScilabDouble([...colon_operator(A,:)],[...B],[C(,)],[...D]);
@@ -28,5 +28,5 @@ function CLSS () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([4,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

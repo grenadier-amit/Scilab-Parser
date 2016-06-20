@@ -19,5 +19,5 @@ function Ground () {
 	this.x=standard_define([1,1],model,exprs,list(gr_i,0));
 	this.x.graphics.in_implicit = new ScilabString(["I"]);
 	this.x.graphics.out_implicit = new ScilabString(["I"]);
-	return new  GroundBlock (this.x)
+	return new GroundBlock(this.x)
 }

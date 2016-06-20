@@ -3,7 +3,7 @@ function RELAY_f () {
 
 	var i0 = 0;
 
-	var in = [[-1],[-1]];
+	var in1 = [[-1],[-1]];
 
 	var nin = 2;
 
@@ -21,5 +21,5 @@ function RELAY_f () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

@@ -13,5 +13,5 @@ function BOUNCE () {
 	k=k+1;
 	ipar(k)=j;
 	k=k+1;
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

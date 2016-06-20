@@ -1,7 +1,7 @@
 function MBLOCK () {
 
 
-	var in = ["u1"];
+	var in1 = ["u1"];
 
 	var intype = ["I"];
 
@@ -26,5 +26,5 @@ function MBLOCK () {
 
 	var for i = 1:lstsize(paramv);
 	model.rpar = new ScilabDouble([model.rpar],[paramv(i)(:)]);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

@@ -1,7 +1,7 @@
 function COSBLK_f () {
 
 
-	var in = 1;
+	var in1 = 1;
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["cosblk"]);
@@ -12,5 +12,5 @@ function COSBLK_f () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,[],gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

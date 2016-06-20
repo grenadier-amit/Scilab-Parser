@@ -1,7 +1,7 @@
 function CBLOCK () {
 
 
-	var in = 1;
+	var in1 = 1;
 
 	var out = 1;
 
@@ -27,7 +27,7 @@ function CBLOCK () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString([" "]),new ScilabDouble([2004]));
-	model.in=new ScilabDouble([in]);
+	model.in=in;
 	model.out=new ScilabDouble([out]);
 	model.evtin=clkin;
 	model.evtout=clkout;
@@ -44,5 +44,5 @@ function CBLOCK () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([4,2]),model,label,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

@@ -23,5 +23,5 @@ function RAMP () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

@@ -5,14 +5,14 @@ function DOLLAR_f () {
 
 	var inh = 0;
 
-	var in = 1;
+	var in1 = 1;
 
 	var exprs = string([z],[inh]);
 
 	var model = scicos_model();
 	model.sim = new ScilabString(["dollar"]);
-	model.in=new ScilabDouble([in]);
-	model.out=new ScilabDouble([in]);
+	model.in=in;
+	model.out=in;
 	model.evtin = new ScilabDouble([1-inh]);
 	model.dstate=new ScilabDouble([z]);
 	model.blocktype = new ScilabString(["d"]);
@@ -20,5 +20,5 @@ function DOLLAR_f () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

@@ -14,5 +14,5 @@ function MAXMIN () {
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
 	this.x.graphics.style = new ScilabString(["MAXMIN;displayedLabel=MAX"]);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

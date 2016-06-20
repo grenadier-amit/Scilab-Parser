@@ -3,7 +3,7 @@ function CMSCOPE () {
 
 	var win = -1;
 
-	var in = [[1],[1]];
+	var in1 = [[1],[1]];
 
 	var wdim = [[-1],[-1]];
 
@@ -25,7 +25,7 @@ function CMSCOPE () {
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["cmscope"]),new ScilabDouble([4]));
-	model.in=new ScilabDouble([in]);
+	model.in=in;
 	model.in2 = new ScilabDouble([1],[1]);
 	model.intyp = new ScilabDouble([1],[1]);
 	model.evtin = new ScilabDouble([1]);
@@ -38,5 +38,5 @@ function CMSCOPE () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
-	return new  BasicBlock (this.x)
+	return new BasicBlock(this.x)
 }

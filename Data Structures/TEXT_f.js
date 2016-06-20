@@ -17,5 +17,5 @@ function TEXT_f () {
 	graphics.sz = new ScilabDouble([2,1]);
 	graphics.exprs=new ScilabString([exprs]);
 	this.x=mlist(new ScilabString(["Text","graphics","model","void","gui"]),graphics,model,new ScilabString([" "]),new ScilabString(["TEXT_f"]));
-	return new  TextBlock (this.x)
+	return new TextBlock(this.x)
 }

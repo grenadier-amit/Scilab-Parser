@@ -11,7 +11,7 @@ function AFFICH_m () {
 
 	var nd = 1;
 
-	var in = [1,1];
+	var in1 = [1,1];
 
 	var model = scicos_model();
 	model.sim=list(new ScilabString(["affich2"]),new ScilabDouble([4]));
@@ -28,5 +28,5 @@ function AFFICH_m () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([3,2]),model,exprs,gr_i);
-	return new  AfficheBlock (this.x)
+	return new AfficheBlock(this.x)
 }
