@@ -3,12 +3,13 @@ import sys
 import os
 import collections
 
+
 orig_stdout = sys.stdout
 
 
 # TO HANDLE ALL DISTINCT VARIBLES ENCOUNTERED
 varList={}
-
+mapping={}
 # PATH FOR ALL .SCI FILES
 rootdir = '/usr/share/scilab'
 
@@ -54,10 +55,7 @@ def argAnalyser(token):
         else:
             return token
     else:
-        if re.search("^[^\(].?list", token[1]):
-            return listCheck(token)
-        else:
-            return token
+        return token
 
 
 # -------------- FUNCTION FOR PUSHING IN AN ARRAY--------------#
@@ -91,7 +89,7 @@ def epsilon(token):
         pushFlag = 1
         leftStr = diagram(token)
 
-    if re.search("^[^\(].?list", token[1]):
+    if re.search(r".?list(?![^(]*\))", token[1]):
         rightStr = listCheck(token)
 
     elif re.search("scicos_link", token[1]):
@@ -112,7 +110,7 @@ def epsilon(token):
 def listCheck(token):
     args = []
     listType = re.search("(.?list)", token[1])
-    arguments = re.search("\((.*)\)", token[1])
+    arguments = re.search("^(.?list)\((.*)\)", token[1])
 
     if listType.group(1) == 'mlist' or listType.group(1) == 'tlist':
         argType = re.search("(\[.*?\])", token[1])
@@ -124,11 +122,12 @@ def listCheck(token):
 
     else:
         try:
-            if ',' in arguments.group(1):
-                arguments = arguments.group(1).split(',')
+            if ',' in arguments.group(2):
+                arguments = arguments.group(2).split(',')
         except:
-            print "no arguments"
-            exit()
+            return token[1]
+            #print "no arguments"
+            #exit()
 
     # IF LIST IS NOT EMPTY
     if arguments and isinstance(arguments, collections.Iterable):
@@ -221,15 +220,57 @@ for i in nameList:
     block_names.append(name)
 
 
+
+
+
+
+
+
+
+
+
+
+
+sdir= "/home/karma/xcos/blocks_xcos"
+for subdir, dirs, files in os.walk(sdir):
+    for file in files:
+        abs_file_path = os.path.join(subdir,file)
+        f = open(abs_file_path,'r')
+        val=f.read()
+        x=re.search(r'\<(\w+).*interfaceFunctionName',val)
+        if not x:
+            x=re.search(r'\<(\w+).*simulationFunctionType',val)
+            if x:
+                mapping[file[:-5]]=x.group(1)
+            else :
+                print "error\t",file,"\n"
+                exit()
+        else:
+            mapping[file[:-5]]=x.group(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #-------------- SEARCHING FOR ALL SCI FILES OF XCOS BLOCKS --------------#
 for subdir, dirs, files in os.walk(rootdir):
     for file in files:
         if file.endswith(".sci") and file[:-4] in block_names:
-
+            key=file[:-4]
             f = open('%s.js' % file[:-4], 'w')
             #REDIRECTING STANDARD OUTPUT OF "print" STATEMENT TO .js FILE
             sys.stdout = f
-
 
 
             sci = ""
@@ -324,7 +365,7 @@ for subdir, dirs, files in os.walk(rootdir):
             for line in sci:
 
                 # REPLACING "string" FUNCTION OF SCILAB TO JAVASCRIPT EQUIVALENT OF "tostring" FUNCTION
-                line=re.sub(r"string\((.*?)\)",r"\1.toString()",line)
+                #line=re.sub(r"string\((.*?)\)",r"\1.toString()",line)
 
 
                 # SPLITTING LINE FROM "=" SYMBOL
@@ -357,9 +398,10 @@ for subdir, dirs, files in os.walk(rootdir):
                 token[1] = re.sub(r"(\[[\d\w]+:[\d\w]+\])\'", r"...transpose(\1)", token[1])
                 token[1] = re.sub(r"(\w+)\(:\)", r"...\1", token[1])
 
+
                 # IF NEW VARIABLE IS ENCOUNTERED
                 if token2[0] not in varList.keys():
-                    if len(re.findall("\[.*\].*\[.*\]", token[1])):
+                    if len(re.findall("^\[.*\].*\[.*\]", token[1])):
                         token[1] = '[' + token[1] + ']'
                         print "\n\tvar %s = %s;" % (token2[0], token[1])
                     else:
@@ -369,7 +411,8 @@ for subdir, dirs, files in os.walk(rootdir):
                 else:
                     Analyser(token)
 
+            print "\treturn new ",mapping[key],"(this.x)"
             print '}'
-
             sys.stdout = orig_stdout
             f.close()
+
