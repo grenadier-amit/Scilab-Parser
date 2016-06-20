@@ -21,7 +21,8 @@ function AFFICH_m () {
 	model.dstate = new ScilabDouble([-1],[0],[0],[1],[1],[0],[zeros(in(1,1)*in(1,2),1)]);
 	model.ipar = new ScilabDouble([font],[fontsize],[colr],[1000],[nt],[nd],[in(1,1)]);
 	model.blocktype = new ScilabString(["c"]);
-	model.firing = new ScilabDouble(, , ,],[model.dep_ut,=,[%t,%f]);
+	model.firing = new ScilabDouble();
+	model.dep_ut = new ScilabBoolean([true,false]);
 	model.label = new ScilabString([""]);
 
 	var exprs = [[,sci2exp([model.in,model.in2])],[string(font)],[string(fontsize)],[string(colr)],[string(nt)],[string(nd)],[string(0),]];
