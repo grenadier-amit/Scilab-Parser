@@ -14,5 +14,6 @@ function MATMUL () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([3,2]),model,label,gr_i);
+	
 	return new BasicBlock(this.x)
 }

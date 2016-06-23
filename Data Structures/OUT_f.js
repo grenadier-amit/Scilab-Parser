@@ -18,5 +18,6 @@ function OUT_f () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([1,1]),model,exprs,gr_i);
+	
 	return new ExplicitOutBlock(this.x)
 }

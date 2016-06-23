@@ -20,5 +20,6 @@ function SELF_SWITCH () {
 	this.x.graphics.out_implicit = new ScilabString(["E"]);
 	this.x.graphics.out_style = new ScilabString([""]);
 	this.x.graphics.style = new ScilabString(["SELF_SWITCH_OFF"]);
+	
 	return new BasicBlock(this.x)
 }

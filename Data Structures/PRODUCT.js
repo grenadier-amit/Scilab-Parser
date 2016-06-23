@@ -15,5 +15,6 @@ function PRODUCT () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,3]),model,,exprs,gr_i);
+	
 	return new Product(this.x)
 }

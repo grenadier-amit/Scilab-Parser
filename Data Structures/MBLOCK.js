@@ -23,8 +23,24 @@ function MBLOCK () {
 	model.blocktype = new ScilabString(["c"]);
 	model.dep_ut = new ScilabBoolean([false,true]);
 	model.rpar = new ScilabDouble();
+	for (var i=1; i < lstsize(paramv); i++){
+	this.model.rpar=[model.rpar;paramv(i)(:)]
+	}
 
-	var for i = 1:lstsize(paramv);
-	model.rpar = new ScilabDouble([model.rpar],[paramv(i)(:)]);
+	var mo = modelica();
+	mo.model=new ScilabString([nameF]);
+	mo.parameters=list(param,paramv);
+	model.sim=list(mo.model,new ScilabDouble([30004]));
+	mo.inputs=new ScilabString([in1]);
+	mo.outputs=new ScilabString([out]);
+	model.in1.push(ones(size(mo.inputs,"r"),1));
+	model.out=ones(size(mo.outputs,"r"),1);
+	model.equations=mo;
+
+	var gr_i = [];
+	this.x=new standard_define(new ScilabDouble([3,2]),model,exprs,gr_i);
+	this.x.graphics.in_implicit=new ScilabString([intype]);
+	this.x.graphics.out_implicit=new ScilabString([outtype]);
+	
 	return new BasicBlock(this.x)
 }

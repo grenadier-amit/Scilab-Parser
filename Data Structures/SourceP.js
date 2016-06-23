@@ -29,5 +29,6 @@ function SourceP () {
 	var gr_i = [];
 	this.x=standard_define([2.5,2],model,exprs,list(gr_i,0));
 	this.x.graphics.out_implicit = new ScilabString(["I"]);
+	
 	return new BasicBlock(this.x)
 }

@@ -25,19 +25,25 @@ function BOUNCEXY () {
 	model.evtin = new ScilabDouble([1]);
 
 	var z = [];
+	for (var i=1; i < size(this.clrs,"*"); i++){
+	this.z(6*(i-1)+1)=0
+	this.z(6*(i-1)+2)=0
+	this.z(6*(i-1)+3)=2*siz(i)
+	this.z(6*(i-1)+4)=2*siz(i)
+	this.z(6*(i-1)+5)=0.000
+	this.z(6*(i-1)+6)=64.0*360.000;
+	}
+	model.dstate=z;
+	model.rpar = new ScilabDouble([xmin],[xmax],[ymin],[ymax]);
+	model.ipar = new ScilabDouble([win],[imode],[...clrs]);
+	model.blocktype = new ScilabString(["d"]);
+	model.firing = new ScilabDouble();
+	model.dep_ut = new ScilabBoolean([false,false]);
 
-	var for i = 1:size(clrs,"*");
+	var exprs = [[strcat(sci2exp(clrs))],[strcat(sci2exp(siz))],[strcat(sci2exp(win))],[strcat(sci2exp(1))],[strcat(sci2exp(xmin))],[strcat(sci2exp(xmax))],[strcat(sci2exp(ymin))],[strcat(sci2exp(ymax))]];
 
-	var z(6*(i-1)+1) = 0;
-
-	var z(6*(i-1)+2) = 0;
-
-	var z(6*(i-1)+3) = 2*siz(i);
-
-	var z(6*(i-1)+4) = 2*siz(i);
-
-	var z(6*(i-1)+5) = 0.000;
-
-	var z(6*(i-1)+6) = 64.0*360.000;
+	var gr_i = [];
+	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
+	
 	return new BasicBlock(this.x)
 }

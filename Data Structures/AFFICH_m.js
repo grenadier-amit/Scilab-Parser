@@ -29,5 +29,6 @@ function AFFICH_m () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([3,2]),model,exprs,gr_i);
+	
 	return new AfficheBlock(this.x)
 }

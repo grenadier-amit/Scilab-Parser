@@ -77,5 +77,6 @@ function MCLOCK_f () {
 	this.x.model.blocktype = new ScilabString(["h"]);
 	this.x.model.rpar=diagram;
 	this.x.graphics.peout = new ScilabDouble([0],[0]);
+	
 	return new BasicBlock(this.x)
 }

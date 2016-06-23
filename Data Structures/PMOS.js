@@ -39,5 +39,6 @@ function PMOS () {
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs,gr_i);
 	this.x.graphics.in_implicit = new ScilabString(["I"]);
 	this.x.graphics.out_implicit = new ScilabString(["I";"I";"I"]);
+	
 	return new BasicBlock(this.x)
 }

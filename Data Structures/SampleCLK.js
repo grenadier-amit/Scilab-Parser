@@ -11,5 +11,6 @@ function SampleCLK () {
 
 	var exprs = [[sci2exp(1)],[sci2exp(0)]];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,exprs," ");
+	
 	return new BasicBlock(this.x)
 }

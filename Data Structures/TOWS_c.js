@@ -27,5 +27,6 @@ function TOWS_c () {
 
 	var exprs = [[string(nz)],[,string(varnam)],[,string(herit)]];
 	this.x=new standard_define(new ScilabDouble([4,2]),,model,,exprs,,gr_i);
+	
 	return new BasicBlock(this.x)
 }

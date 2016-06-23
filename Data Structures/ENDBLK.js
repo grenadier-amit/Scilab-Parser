@@ -9,5 +9,6 @@ function ENDBLK () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,2]),model,[],gr_i);
+	
 	return new BasicBlock(this.x)
 }

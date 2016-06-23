@@ -18,5 +18,6 @@ function IFTHEL_f () {
 
 	var exprs = [[string(model.in1)],[string(model.nmode)]];
 	this.x=new standard_define(new ScilabDouble([3,3]),model,exprs,gr_i);
+	
 	return new BasicBlock(this.x)
 }

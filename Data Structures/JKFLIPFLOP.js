@@ -49,5 +49,6 @@ function JKFLIPFLOP () {
 
 	var gr_i = [];
 	this.x=new standard_define(new ScilabDouble([2,3]),model,[],gr_i);
+	
 	return new BasicBlock(this.x)
 }
