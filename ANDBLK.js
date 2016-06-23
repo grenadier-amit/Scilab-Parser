@@ -61,7 +61,8 @@ function ANDBLK () {
 	this.x=scicos_block();
 	this.x.gui = new ScilabString(["ANDBLK"]);
 	this.x.graphics.sz = new ScilabDouble([2,2]);
-	this.x.graphics.gr_i = new ScilabDouble(],[x.graphics.pein=[0],[0]);
+	this.x.graphics.gr_i = new ScilabDouble();
+	this.x.graphics.pein = new ScilabDouble([0],[0]);
 	this.x.graphics.peout = new ScilabDouble([0]);
 	this.x.model.sim = new ScilabString(["csuper"]);
 	this.x.model.evtin = new ScilabDouble([1],[1]);
@@ -70,4 +71,5 @@ function ANDBLK () {
 	this.x.model.firing = new ScilabBoolean([false]);
 	this.x.model.dep_ut = new ScilabBoolean([false,false]);
 	this.x.model.rpar=diagram;
+	return new BasicBlock(this.x)
 }
