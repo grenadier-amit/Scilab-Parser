@@ -1,5 +1,5 @@
 ## SCILAB PARSER ##
-A simple python script to convert scilab data -structures into equivalent javascipt.
+A simple python script to convert scilab data -structures into equivalent javascript.
 
 ###How it works?
 
